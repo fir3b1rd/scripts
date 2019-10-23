@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tail "$@" \
+| ack --flush --passthru --color --color-match=red    "^.*\*ERROR\*.*" \
+| ack --flush --passthru --color --color-match=yellow "^.*\*WARN\*.*" \
+| ack --flush --passthru --color --color-match=green  "^.*\*INFO\*.*" \
+| ack --flush --passthru --color --color-match=white  "^.*\*DEBUG\*.*" \
+| ack --flush --passthru --color --color-match=white  "^.*\*TRACE\*.*"
+
